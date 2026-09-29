@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LKPD Digital Biologi: Struktur Tulang & Persendian</title>
+  
+  <!-- Font Modern Edutech -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #e0f2fe;
+      --accent: #0d9488;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 10px 25px -5px rgba(2, 132, 199, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(2, 132, 199, 0.06) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(13, 148, 136, 0.06) 0px, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    /* Top Sticky Navigation & Progress Bar */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+    }
+
+    .top-nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-brand {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      color: var(--primary-dark);
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .progress-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 200px;
+    }
+
+    .progress-bar {
+      flex: 1;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    .progress-text {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      min-width: 45px;
+    }
+
+    /* Main Container */
+    .main-wrapper {
+      max-width: 900px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+
+    /* Hero Banner */
+    .hero-card {
+      background: linear-gradient(135deg, #0284c7 0%, #0d9488 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 36px 32px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 12px;
+    }
+
+    .hero-card h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.85rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    /* Card Panels */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #f1f5f9;
+    }
+
+    .card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .hint {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: #fafafa;
+      transition: all 0.2s ease;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      outline: none;
+      background: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+      color: #334155;
+    }
+
+    .submit-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-submit {
+      width: 100%;
+      max-width: 420px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: white;
+      padding: 16px 28px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
+    }
+
+    .btn-submit:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    .status-alert {
+      display: none;
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      background: #dcfce7;
+      border: 1px solid #86efac;
+      color: #15803d;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hidden iframe untuk menangkap respon Google tanpa reload/blokir CORS -->
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){onSuccessSubmit();}"></iframe>
+
+  <!-- Sticky Top Nav -->
+  <div class="top-nav">
+    <div class="top-nav-inner">
+      <div class="nav-brand"><span>🦴</span> BioGerak XI</div>
+      <div class="progress-wrapper">
+        <div class="progress-bar">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+        <span id="progressText" class="progress-text">0% Diisi</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-wrapper">
+    <!-- Header Card -->
+    <div class="hero-card">
+      <div class="hero-badge">🧬 Biologi SMA • Kelas XI</div>
+      <h1>LEMBAR KERJA PESERTA DIDIK (LKPD)</h1>
+      <p>Topik: Struktur & Fungsi Tulang serta Jenis Persendian • Pertemuan 1</p>
+    </div>
+
+    <!-- Form Web yang Mengarah Langsung ke Apps Script Deployment Baru -->
+    <form id="lkpdForm" 
+          action="https://script.google.com/macros/s/AKfycbwSwk-QnyN3Wf3Uayg4okLWL2mluZaFSJPZ6rAokIOefqtN-dRKZjPvP2ZNnhTkhJJk/exec" 
+          method="POST" 
+          target="hidden_iframe" 
+          onsubmit="submitted=true;">
+
+      <!-- Identitas Kelompok -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">👥</div>
+          <div class="card-title">Identitas Peserta Didik</div>
+        </div>
+        <div class="form-group">
+          <label for="kelompok">Nama Kelompok / Daftar Anggota:</label>
+          <input type="text" id="kelompok" name="kelompok" placeholder="Contoh: Kelompok 4 (Andi, Rara, Danu, Salma)" required />
+        </div>
+      </div>
+
+      <!-- Bagian 1 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">1</div>
+          <div class="card-title">Fungsi Tulang & Sistem Rangka</div>
+        </div>
+        <div class="form-group">
+          <label for="fungsi_penopang">A. Sebagai penopang tubuh dan penegak postur:</label>
+          <textarea id="fungsi_penopang" name="fungsi_penopang" rows="2" placeholder="Tuliskan jawaban..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="fungsi_gerak_pasif">B. Sebagai alat gerak pasif:</label>
+          <textarea id="fungsi_gerak_pasif" name="fungsi_gerak_pasif" rows="2" placeholder="Tuliskan penjelasan..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="organ_vital">C. Contoh organ vital yang dilindungi oleh tulang:</label>
+          <input type="text" id="organ_vital" name="organ_vital" placeholder="Contoh: Otak (tengkorak), Paru & Jantung (rusuk)" required />
+        </div>
+        <div class="form-group">
+          <label for="mineral_tulang">D. Dua mineral utama yang disimpan di dalam tulang:</label>
+          <input type="text" id="mineral_tulang" name="mineral_tulang" placeholder="Contoh: Kalsium dan Fosfor" required />
+        </div>
+      </div>
+
+      <!-- Bagian 2 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">2</div>
+          <div class="card-title">Struktur Jaringan Tulang</div>
+        </div>
+        <p class="hint">Lengkapi tabel perbandingan karakteristik dua lapisan jaringan tulang berikut:</p>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 25%;">Jenis Tulang</th>
+                <th style="width: 35%;">Ciri Fisik / Struktur</th>
+                <th style="width: 40%;">Letak / Fungsi Ringkas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tulang Kompak</strong></td>
+                <td><input type="text" name="kompak_ciri" value="Padat, keras, dan rapat" required /></td>
+                <td><input type="text" name="kompak_fungsi" value="Bagian luar tulang; memberi kekuatan menahan beban" required /></td>
+              </tr>
+              <tr>
+                <td><strong>Tulang Spons</strong></td>
+                <td><input type="text" name="spons_ciri" value="Berongga menyerupai spons" required /></td>
+                <td><input type="text" name="spons_fungsi" value="Bagian dalam; tempat sumsum tulang dan penyimpan mineral" required /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Bagian 3 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">3</div>
+          <div class="card-title">Klasifikasi Persendian (Artikulasi)</div>
+        </div>
+        <div class="form-group">
+          <label for="sinartrosis_letak">A. Sinartrosis (Sendi Mati) – Contoh Letak:</label>
+          <input type="text" id="sinartrosis_letak" name="sinartrosis_letak" placeholder="Contoh: Sutura pada tulang tengkorak" required />
+        </div>
+        <div class="form-group">
+          <label for="amfiartrosis_letak">B. Amfiartrosis (Sendi Kaku) – Contoh Letak:</label>
+          <input type="text" id="amfiartrosis_letak" name="amfiartrosis_letak" placeholder="Contoh: Ruas tulang belakang (vertebrae)" required />
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label for="sendi_engsel">1. Sendi Engsel (1 arah gerak):</label>
+            <input type="text" id="sendi_engsel" name="sendi_engsel" placeholder="Contoh: Siku, lutut" required />
+          </div>
+          <div class="form-group">
+            <label for="sendi_peluru">2. Sendi Peluru (Ke semua arah):</label>
+            <input type="text" id="sendi_peluru" name="sendi_peluru" placeholder="Contoh: Tulang paha & panggul" required />
+          </div>
+          <div class="form-group">
+            <label for="sendi_putar">3. Sendi Putar (Rotasi / memutar):</label>
+            <input type="text" id="sendi_putar" name="sendi_putar" placeholder="Contoh: Tulang atlas & aksis" required />
+          </div>
+          <div class="form-group">
+            <label for="sendi_pelana">4. Sendi Pelana (2 arah):</label>
+            <input type="text" id="sendi_pelana" name="sendi_pelana" placeholder="Contoh: Pangkal ibu jari" required />
+          </div>
+        </div>
+      </div>
+
+      <!-- Bagian 4 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">D</div>
+          <div class="card-title">Refleksi Singkat Siswa</div>
+        </div>
+        <div class="form-group">
+          <label for="refleksi">Tuliskan 1 hal baru yang paling penting dipahami hari ini:</label>
+          <textarea id="refleksi" name="refleksi" rows="3" placeholder="Refleksi pembelajaran..." required></textarea>
+        </div>
+      </div>
+
+      <!-- Submit Section -->
+      <div class="submit-card">
+        <button type="submit" id="submitBtn" class="btn-submit">🚀 Simpan & Kirim ke Spreadsheet</button>
+        <div id="statusAlert" class="status-alert">🎉 <strong>Berhasil Dikirim!</strong> Jawaban kelompok telah tersimpan ke Google Spreadsheet.</div>
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    let submitted = false;
+    const form = document.getElementById("lkpdForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const statusAlert = document.getElementById("statusAlert");
+    const progressFill = document.getElementById("progressFill");
+    const progressText = document.getElementById("progressText");
+
+    // Real-Time Progress Bar
+    const inputFields = form.querySelectorAll("input[type='text'], textarea");
+    function updateProgress() {
+      let filled = 0;
+      inputFields.forEach(field => {
+        if (field.value.trim() !== "") filled++;
+      });
+      const pct = Math.round((filled / inputFields.length) * 100);
+      progressFill.style.width = pct + "%";
+      progressText.textContent = pct + "% Diisi";
+    }
+
+    inputFields.forEach(field => field.addEventListener("input", updateProgress));
+    updateProgress();
+
+    // Event saat tombol submit ditekan
+    form.addEventListener("submit", function() {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "⏳ Menyimpan ke Spreadsheet...";
+    });
+
+    // Callback otomatis yang dieksekusi saat data berhasil diterima oleh Google Apps Script
+    function onSuccessSubmit() {
+      submitBtn.textContent = "Jawaban Berhasil Disimpan ✔";
+      statusAlert.style.display = "block";
+      inputFields.forEach(el => el.disabled = true);
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
