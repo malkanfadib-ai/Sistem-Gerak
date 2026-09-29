@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LKPD Digital Biologi: Struktur Tulang & Persendian</title>
   
-  <!-- Font Modern Edutech -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -43,7 +42,6 @@
       padding-bottom: 60px;
     }
 
-    /* Top Sticky Navigation & Progress Bar */
     .top-nav {
       position: sticky;
       top: 0;
@@ -103,14 +101,12 @@
       min-width: 45px;
     }
 
-    /* Main Container */
     .main-wrapper {
       max-width: 900px;
       margin: 24px auto;
       padding: 0 16px;
     }
 
-    /* Hero Banner */
     .hero-card {
       background: linear-gradient(135deg, #0284c7 0%, #0d9488 100%);
       color: white;
@@ -142,7 +138,6 @@
       margin-bottom: 10px;
     }
 
-    /* Card Panels */
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -279,16 +274,10 @@
       transition: all 0.2s ease;
     }
 
-    .btn-submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
-    }
-
     .btn-submit:disabled {
       background: #94a3b8;
       cursor: not-allowed;
       box-shadow: none;
-      transform: none;
     }
 
     .status-alert {
@@ -300,21 +289,14 @@
       background: #dcfce7;
       border: 1px solid #86efac;
       color: #15803d;
-      animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-4px); }
-      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Hidden iframe untuk menangkap respon Google tanpa reload/blokir CORS -->
+  <!-- Iframe tersembunyi sebagai penampung POST request (Anti-CORS) -->
   <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){onSuccessSubmit();}"></iframe>
 
-  <!-- Sticky Top Nav -->
   <div class="top-nav">
     <div class="top-nav-inner">
       <div class="nav-brand"><span>🦴</span> BioGerak XI</div>
@@ -328,14 +310,13 @@
   </div>
 
   <div class="main-wrapper">
-    <!-- Header Card -->
     <div class="hero-card">
       <div class="hero-badge">🧬 Biologi SMA • Kelas XI</div>
       <h1>LEMBAR KERJA PESERTA DIDIK (LKPD)</h1>
       <p>Topik: Struktur & Fungsi Tulang serta Jenis Persendian • Pertemuan 1</p>
     </div>
 
-    <!-- Form Web yang Mengarah Langsung ke Apps Script Deployment Anda -->
+    <!-- Form Web menuju endpoint Apps Script -->
     <form id="lkpdForm" 
           action="https://script.google.com/macros/s/AKfycbwSwk-QnyN3Wf3Uayg4okLWL2mluZaFSJPZ6rAokIOefqtN-dRKZjPvP2ZNnhTkhJJk/exec" 
           method="POST" 
@@ -378,7 +359,7 @@
         </div>
       </div>
 
-      <!-- Bagian 2 (TABEL SUDAH DIKOSONGKAN) -->
+      <!-- Bagian 2 (KOSONG SIAP DIISI SISWA) -->
       <div class="card">
         <div class="card-header">
           <div class="card-icon">2</div>
@@ -488,13 +469,11 @@
     inputFields.forEach(field => field.addEventListener("input", updateProgress));
     updateProgress();
 
-    // Event saat tombol submit ditekan
     form.addEventListener("submit", function() {
       submitBtn.disabled = true;
       submitBtn.textContent = "⏳ Menyimpan ke Spreadsheet...";
     });
 
-    // Callback otomatis yang dieksekusi saat data berhasil diterima oleh Google Apps Script
     function onSuccessSubmit() {
       submitBtn.textContent = "Jawaban Berhasil Disimpan ✔";
       statusAlert.style.display = "block";
